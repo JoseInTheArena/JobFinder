@@ -12,4 +12,5 @@ app.get("*", function(req, res){
 });
 
 //This setting works for Cloud9
-app.listen(3000);
+//app.listen(3000);
+app.listen(process.env.PORT, process.env.IP);
