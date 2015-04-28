@@ -19,8 +19,8 @@ app.get("*", function(req, res){
 });
 
 //mongoose.connect("mongodb://localhost/jobfinder");
-jobsData.connectDB("mongodb://localhost/jobfinder").then(function(){
-//jobsData.connectDB("mongodb://root:p0r!v071@ds053937.mongolab.com:53937/jobfinder").then(function(){
+//jobsData.connectDB("mongodb://localhost/jobfinder").then(function(){
+jobsData.connectDB("mongodb://root:p0r!v071@ds053937.mongolab.com:53937/jobfinder").then(function(){
 	console.log("Connected to MongoDB!");
 	jobsData.seedJobs();
 });
