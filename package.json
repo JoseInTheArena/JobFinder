@@ -9,11 +9,13 @@
   "author": "Jose Arzuaga",
   "license": "ISC",
   "dependencies": {
+    "bluebird": "^2.9.24",
     "express": "^4.12.3",
     "jade": "^1.9.2",
     "mongoose": "^4.0.2"
   },
   "devDependencies": {
-    "bower": "^1.4.1"
+    "bower": "^1.4.1",
+    "chai": "^2.3.0"
   }
 }
