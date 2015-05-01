@@ -12,7 +12,7 @@ var jobs = [
 ];
 
 exports.findJobs = function(query){
-	return Promise.cast(mongoose.model("Job").find(query).exec());
+	return Promise.cast(Job.find(query).exec());
 };
 
 exports.seedJobs = function(){
@@ -25,8 +25,12 @@ exports.seedJobs = function(){
 	});
 };
 
+exports.saveJob = function(newJob){
+    return createJob(newJob);
+};
+
 exports.connectDB = Promise.promisify(mongoose.connect, mongoose);
 
 function findJobs(query){
-	return Promise.cast(mongoose.model("Job").find(query).exec());
+	return Promise.cast(Job.find(query).exec());
 };

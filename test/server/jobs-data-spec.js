@@ -1,9 +1,9 @@
 var chai = require("chai");
 var expect = chai.expect;
 var mongoose = require("mongoose");
-var Job = require("../models/Job");
+var Job = require("../../models/Job");
 var Promise = require("bluebird");
-var jobsData = require("../jobs-data");
+var jobsData = require("../../jobs-data");
 
 function resetJobs(){
 	return new Promise(function(resolve, reject){
@@ -13,8 +13,28 @@ function resetJobs(){
 
 var connectDB = Promise.promisify(mongoose.connect, mongoose);
 
+describe("save jobs", function(){
+
+    var newJob = {title:"Teacher", description:"You will shaping minds"};
+
+    it("should have an id after saving the job to the database", function(done){
+        jobsData.connectDB("mongodb://root:p0r!v071@ds053937.mongolab.com:53937/jobfinder")
+            .then(resetJobs)
+            .then(jobsData.saveJob.bind(null, newJob))
+            .then(function(savedJob){
+                expect(savedJob.id).is.not.empty;
+                done();
+            });
+    });
+
+    after(function(){
+        mongoose.connection.close();
+    });
+
+});
+
 describe("get jobs", function(){
-	
+
 	var jobs = [];
 
 	before(function(done){
